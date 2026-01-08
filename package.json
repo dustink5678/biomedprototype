@@ -1,0 +1,41 @@
+{
+  "name": "bmed-prototype",
+  "version": "1.0.0",
+  "description": "BMed Prototype - Government Recording System",
+  "main": "index.js",
+  "workspaces": [
+    "client",
+    "server",
+    "functions"
+  ],
+  "scripts": {
+    "dev": "npm run find-ports && concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "client": "npm run --workspace=client start",
+    "server": "npm run --workspace=server dev",
+    "functions": "npm run --workspace=functions build",
+    "find-ports": "node scripts/find-ports.js",
+    "start": "npm run dev",
+    "build": "npm run --workspace=client build",
+    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions",
+    "install-all": "npm install"
+  },
+  "keywords": [
+    "recording",
+    "government",
+    "firebase",
+    "react",
+    "nlp",
+    "healthcare"
+  ],
+  "author": "Dustin King",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "get-port": "^7.0.0"
+  },
+  "dependencies": {
+    "compromise": "^14.14.4",
+    "sentiment": "^5.0.2"
+  }
+}

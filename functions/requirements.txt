@@ -1,0 +1,8 @@
+firebase-admin>=6.0.0
+transformers>=4.21.0
+torch>=1.12.0
+numpy>=1.21.0
+flair>=0.12.0
+contractions>=0.1.73
+functions-framework>=3.0.0
+google-cloud-speech>=2.0.0

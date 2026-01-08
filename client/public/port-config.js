@@ -1,0 +1,2 @@
+window.SERVER_PORT = 60052;
+window.CLIENT_PORT = 60053;

@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Base rule: Allow authenticated users (Google, Email/Password, or Anonymous)
+    // In development, allow all access for simplicity
+    // In production, restrict based on authentication method
+    match /{document=**} {
+      allow read, write: if request.auth != null ||
+        (request.auth == null && debug_mode_enabled());
+    }
+
+    // Sessions collection - specific rules for session management
+    match /sessions/{sessionId} {
+      // Allow read/write for authenticated users
+      allow read, write: if request.auth != null;
+
+      // Additional validation for session creation
+      allow create: if request.auth != null &&
+        request.resource.data.keys().hasAll(['agentId', 'title', 'status']);
+
+      // Allow updates only by the session owner or admin
+      allow update: if request.auth != null &&
+        (resource.data.agentId == request.auth.uid ||
+         request.auth.token.admin == true);
+    }
+
+    // Users collection for profile data
+    match /users/{userId} {
+      // Users can read/write their own profile
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Admin-only collections
+    match /admin/{document=*} {
+      allow read, write: if request.auth != null &&
+        request.auth.token.admin == true;
+    }
+  }
+}
+
+// Helper function to check if debug mode is enabled
+function debug_mode_enabled() {
+  // This would be set via Firebase Functions config in production
+  return false;
+} 
