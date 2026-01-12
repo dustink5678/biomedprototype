@@ -1,4 +1,4 @@
-/**
+/** Kylie Park
  * @file Dashboard.js
  * @description Main dashboard page displaying user overview, recent sessions, and quick action cards.
  * 
