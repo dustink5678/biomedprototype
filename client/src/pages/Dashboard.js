@@ -1,4 +1,4 @@
-/**
+/** Kylie Park
  * @file Dashboard.js
  * @description Main dashboard page displaying user overview, recent sessions, and quick action cards.
  * 
@@ -26,7 +26,6 @@ import { collection, getDocs, orderBy, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
-import UserProfile from '../components/UserProfile';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { deleteSessionDoc } from '../services/firebaseSessions';
@@ -203,7 +202,6 @@ const Dashboard = () => {
       )}
 
       {/* User Profile Section */}
-      <UserProfile />
 
 
       {/* Recent Sessions */}
