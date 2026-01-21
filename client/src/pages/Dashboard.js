@@ -205,31 +205,6 @@ const Dashboard = () => {
       {/* User Profile Section */}
       <UserProfile />
 
-      {/* Quick Actions */}
-      <div className="dashboard-grid" style={{ marginBottom: '40px' }}>
-        <div className="quick-action-card" onClick={() => navigate('/recording')}>
-          <div className="card-content">
-            <h3>Start New Recording</h3>
-            <p>Begin a new recording session with video, audio, and live transcription</p>
-          </div>
-        </div>
-
-        <div className="quick-action-card" onClick={() => navigate('/sessions')}>
-          <div className="card-content">
-            <h3>View All Sessions</h3>
-            <p>Browse and manage all your recording sessions</p>
-          </div>
-        </div>
-
-        <div className="quick-action-card" onClick={() => navigate('/upload')}>
-          <div className="card-content">
-            <h3>Upload Files</h3>
-            <p>Upload and combine recording files into synchronized sessions</p>
-          </div>
-        </div>
-
-
-      </div>
 
       {/* Recent Sessions */}
       <div className="card">
